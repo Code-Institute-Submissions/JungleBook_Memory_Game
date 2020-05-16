@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
+@font-face {
+    font-family: "Egyptian Nights";
+    src: url("assets/fonts/EgyptianNights-yAOV.ttf") format("truetype");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Spicy Rice", cursive;
+    cursor: url('https://res.cloudinary.com/ktm28/image/upload/v1588682662/Jungle_book/boomerang-cursor.png'), auto;
+}
+
+body {
+    background: url('https://res.cloudinary.com/ktm28/image/upload/v1589642296/Jungle_book/dark-frame_cc0f0d.jpg') no-repeat center center fixed;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        /* The file size of this background image is much smaller
+       * to improve page load speed on mobile internet connections */
+        background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,h_505,q_auto,w_768/v1589642296/Jungle_book/dark-frame_cc0f0d.png');
+    }
+}
