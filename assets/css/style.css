@@ -12,7 +12,6 @@
 
 html {
     font-family: "Spicy Rice", cursive;
-    cursor: url('https://res.cloudinary.com/ktm28/image/upload/v1588682662/Jungle_book/boomerang-cursor.png'), auto;
 }
 
 body {
@@ -44,6 +43,10 @@ body {
     background-position: center;
     height: 2em;
     width: 2.2em;
+}
+
+.btn :hover {
+    cursor: pointer;
 }
 
 .soundOn {
@@ -87,6 +90,7 @@ body {
 /* --Overlays-- */
 
 .overlay-text {
+    display: none;
     color: #00fa70;
     position: fixed;
     top: 0;
@@ -135,4 +139,30 @@ body {
     to {
         font-size: 3em;
     }
+}
+
+
+/* --Cards-- */
+
+.card {
+    position: relative;
+    height: 7em;
+    width: 7em;
+    cursor: url('https://res.cloudinary.com/ktm28/image/upload/v1588682662/Jungle_book/boomerang-cursor.png'), auto;
+}
+
+.card-face {
+    height: 100%;
+    width: 100%;
+    border-radius: 2px solid orange;
+    background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,h_150,w_150/v1589655283/Jungle_book/card-face_o1lday.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 500ms ease-in-out;
 }
