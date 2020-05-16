@@ -26,10 +26,113 @@ body {
     background-size: cover;
 }
 
-@media only screen and (max-width: 767px) {
-    body {
-        /* The file size of this background image is much smaller
-       * to improve page load speed on mobile internet connections */
-        background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,h_505,q_auto,w_768/v1589642296/Jungle_book/dark-frame_cc0f0d.png');
+.page-header {
+    color: #ee4b22;
+    font-family: "Egyptian Nights";
+    text-align: center;
+    font-size: 6em;
+}
+
+
+/* --Sound Toggler */
+
+.btn {
+    border: 1px solid #10552f;
+    border-radius: 50px;
+    background-color: #ee4b22;
+    margin-top: 5px;
+    background-position: center;
+    height: 2em;
+    width: 2.2em;
+}
+
+.soundOn {
+    background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,w_28/v1588692544/Jungle_book/unmute-icon.png');
+}
+
+.soundOff {
+    background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,h_32,w_28/v1588692539/Jungle_book/mute-icon.png');
+}
+
+
+/* --Game Area-- */
+
+.game-info-container {
+    grid-column: 1/ -1;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ffffff;
+    /*border for reference */
+    width: 500px;
+    height: 500px;
+    margin: 50px auto;
+}
+
+.game-container {
+    display: grid;
+    border: 3px #ee4b22;
+    grid-template-columns: repeat(4, auto);
+    gap: 10px;
+    margin: 50px;
+    justify-content: center;
+    perspective: 500px;
+}
+
+.game-info {
+    color: #00fa70;
+    font-size: 2.5em;
+}
+
+
+/* --Overlays-- */
+
+.overlay-text {
+    color: #00fa70;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.overlay-text-small {
+    font-size: 3em;
+}
+
+.instruction-text {
+    font-family: "Egyptian Nights";
+    color: #ebee22;
+    font-size: 2.5em;
+}
+
+.overlay-img {
+    width: 80%;
+    animation: tiger 1000ms forwards;
+}
+
+@keyframes tiger {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 80%;
+    }
+}
+
+.overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 800ms forwards;
+}
+
+@keyframes overlay-grow {
+    from {
+        font-size: 0;
+    }
+    to {
+        font-size: 3em;
     }
 }
