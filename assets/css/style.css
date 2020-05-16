@@ -43,9 +43,6 @@ body {
     background-position: center;
     height: 2em;
     width: 2.2em;
-}
-
-.btn :hover {
     cursor: pointer;
 }
 
@@ -100,6 +97,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 100;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .overlay-text-small {
@@ -134,10 +132,12 @@ body {
 
 @keyframes overlay-grow {
     from {
+        background-color: rgba(51, 102, 0, 0.2);
         font-size: 0;
     }
     to {
-        font-size: 3em;
+        background-color: rgb(172, 245, 100);
+        font-size: 6em;
     }
 }
 
@@ -165,4 +165,38 @@ body {
     -o-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transition: transform 500ms ease-in-out;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.card-back {
+    transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -o-transform: rotateY(-0);
+    -ms-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+}
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+    -moz-transform: rotateY(0);
+    -o-transform: rotateY(-0);
+    -ms-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+}
+
+.card-front {
+    transform: rotateY(180deg);
+    -moz-transform: rotateY(0);
+    -o-transform: rotateY(-0);
+    -ms-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -o-transform: rotateY(-0);
+    -ms-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
 }
