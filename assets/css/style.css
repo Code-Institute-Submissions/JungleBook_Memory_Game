@@ -15,6 +15,7 @@ html {
 }
 
 body {
+    margin: 0;
     background: url('https://res.cloudinary.com/ktm28/image/upload/v1589642296/Jungle_book/dark-frame_cc0f0d.jpg') no-repeat center center fixed;
     height: 100vh;
     width: 100%;
@@ -58,19 +59,13 @@ body {
 /* --Game Area-- */
 
 .game-info-container {
-    grid-column: 1/ -1;
+    grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
-    border: 1px solid #ffffff;
-    /*border for reference */
-    width: 500px;
-    height: 500px;
-    margin: 50px auto;
 }
 
 .game-container {
     display: grid;
-    border: 3px #ee4b22;
     grid-template-columns: repeat(4, auto);
     gap: 10px;
     margin: 50px;
@@ -144,10 +139,10 @@ body {
 
 /* --Cards-- */
 
-.card {
-    position: relative;
-    height: 7em;
-    width: 7em;
+.card-area {
+    background-color: #00fa70;
+    height: 6em;
+    width: 6em;
     cursor: url('https://res.cloudinary.com/ktm28/image/upload/v1588682662/Jungle_book/boomerang-cursor.png'), auto;
 }
 
