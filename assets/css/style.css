@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
+
 @font-face {
     font-family: "Egyptian Nights";
     src: url("assets/fonts/EgyptianNights-yAOV.ttf") format("truetype");
@@ -75,7 +76,7 @@ body {
 
 .game-info {
     color: #00fa70;
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 
@@ -83,7 +84,7 @@ body {
 
 .overlay-text {
     display: none;
-    color: #00fa70;
+    color: #9afa00;
     position: fixed;
     top: 0;
     left: 0;
@@ -92,47 +93,55 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 100;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 6px rgba(138, 24, 24, 0.5);
+    cursor: pointer;
+    font-family: "Egyptian Nights", sans-serif;
 }
 
 .overlay-text-small {
-    font-size: 3em;
+    font-size: 2em;
+    font-family: "Egyptian Nights", sans-serif;
 }
 
 .instruction-text {
-    font-family: "Egyptian Nights";
+    font-family: "Spicy Rice", cursive;
     color: #ebee22;
-    font-size: 2.5em;
+    font-size: 0.5em;
+
 }
 
 .overlay-img {
-    width: 80%;
-    animation: tiger 1000ms forwards;
+    position: relative;
+    width: 30%;
+    animation: tiger 500ms forwards;
+    animation-timing-function: ease-in;
 }
 
 @keyframes tiger {
     from {
         width: 0%;
     }
+
     to {
-        width: 80%;
+        width: 30%;
     }
 }
 
 .overlay-text.visible {
     display: flex;
     flex-direction: column;
-    animation: overlay-grow 800ms forwards;
+    animation: overlay-grow 500ms forwards;
 }
 
 @keyframes overlay-grow {
     from {
-        background-color: rgba(51, 102, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0);
         font-size: 0;
     }
+
     to {
-        background-color: rgb(172, 245, 100);
-        font-size: 6em;
+        background-color: rgb(0, 0, 0, 0.9);
+        font-size: 4em;
     }
 }
 
@@ -149,8 +158,7 @@ body {
 .card-face {
     height: 100%;
     width: 100%;
-    border-radius: 2px solid orange;
-    background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,h_150,w_150/v1589655283/Jungle_book/card-face_o1lday.png');
+    /* background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,h_150,w_150/v1589655283/Jungle_book/card-face_o1lday.png'); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,6 +170,8 @@ body {
     transition: transform 500ms ease-in-out;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    border-radius: 12px;
+    border-style: solid;
 }
 
 .card-back {
@@ -170,6 +180,7 @@ body {
     -o-transform: rotateY(-0);
     -ms-transform: rotateY(0);
     -webkit-transform: rotateY(0);
+
 }
 
 .card.visible .card-back {
@@ -186,6 +197,7 @@ body {
     -o-transform: rotateY(-0);
     -ms-transform: rotateY(0);
     -webkit-transform: rotateY(0);
+
 }
 
 .card.visible .card-front {
