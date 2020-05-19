@@ -72,7 +72,17 @@ const levels = {
 };
 
 //Cards
-
+class MemoryGame {
+    constructor(totalTime) {
+        this.cardsArray = [];
+        this.totalTime = totalTime;
+        this.timeRemaining = totalTime; // countdown time
+        this.timer = document.getElementById('time-remaining');
+        this.ticker = document.getElementById('flips');
+        this.audioController = new AudioController();
+    }
+   
+}
 
 
 // Add function to generate cards
