@@ -5,7 +5,9 @@
     src: url("assets/fonts/EgyptianNights-yAOV.ttf") format("truetype");
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -28,10 +30,10 @@ body {
 }
 
 .page-header {
-    color: #ee4b22;
+    color: #b9e665;
     font-family: "Egyptian Nights";
     text-align: center;
-    font-size: 6em;
+    font-size: 3.5em;
 }
 
 
@@ -40,7 +42,7 @@ body {
 .btn {
     border: 1px solid #10552f;
     border-radius: 50px;
-    background-color: #ee4b22;
+    background-color: #b9e665;
     margin-top: 5px;
     background-position: center;
     height: 2em;
@@ -148,8 +150,9 @@ body {
 
 /* --Cards-- */
 
-.card-area {
-    background-color: #00fa70;
+.card {
+    /* background-color: #00fa70; */
+    position: relative;
     height: 6em;
     width: 6em;
     cursor: url('https://res.cloudinary.com/ktm28/image/upload/v1588682662/Jungle_book/boomerang-cursor.png'), auto;
@@ -180,7 +183,7 @@ body {
     -o-transform: rotateY(-0);
     -ms-transform: rotateY(0);
     -webkit-transform: rotateY(0);
-
+   
 }
 
 .card.visible .card-back {
@@ -189,6 +192,7 @@ body {
     -o-transform: rotateY(-0);
     -ms-transform: rotateY(0);
     -webkit-transform: rotateY(0);
+    
 }
 
 .card-front {
@@ -206,4 +210,9 @@ body {
     -o-transform: rotateY(-0);
     -ms-transform: rotateY(0);
     -webkit-transform: rotateY(0);
+}
+
+.card-img {
+    max-width: 6em;
+    max-height: 6em;
 }
