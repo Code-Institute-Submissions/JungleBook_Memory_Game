@@ -80,7 +80,38 @@ class MemoryGame {
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.audioController = new AudioController();
+        this.currentLevel = 1;
     }
+
+    generateCards() {
+        const level = this.currentLevel;
+
+        let duplicate = [...levels[level], ...levels[level]]; // Code Source: stack-overflow
+
+        let insertCard = document.getElementsByClassName('game-container');
+
+        duplicate.forEach(
+            (href) => insertCard.insertAdjacentHTML('beforeend',`
+        <div class="card-back card-face">
+            <img src="https://res.cloudinary.com/ktm28/image/upload/v1589904300/Jungle_book/question-mark_kscb6u.png"
+                class="card-img">
+        </div> <div class="card-front card-face">
+            <img class="card-img"
+                src="${href}">
+        </div>`)
+        );
+        
+        let cards = Array.from(document.getElementsByClassName('card'));
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                this.flipCard(card);
+            });
+        });
+
+        this.cardsArray = cards;
+    }
+
    
 }
 
