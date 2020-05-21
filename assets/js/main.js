@@ -140,8 +140,9 @@ class MemoryGame {
         }
     }
     canFlipCard(card) {
-        // if this statements is false then it will return true and if it's not true then it will return false
+        // if this statements is false then it will return true and player can flip the card
         //return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
+        return true;
     }
     hideCards() {
         this.cardsArray.forEach((card) => {
@@ -161,11 +162,6 @@ class MemoryGame {
 
 
 // Add function to generate cards
-
-
-
-
-
 
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
