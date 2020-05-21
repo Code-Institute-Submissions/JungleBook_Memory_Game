@@ -3,10 +3,10 @@ class AudioController {
         this.bgMusic = new Audio("assets/audio/background-main.mp3");
         this.flipSound = new Audio("assets/audio/flipcard.wav");
         this.matchedSound = new Audio("assets/audio/matchcard.wav");
-        this.levelUpSounds = new Audio("assets/audio/level-up.wav");
+        this.levelUpSound = new Audio("assets/audio/level-up.wav");
         this.gameOverSound = new Audio("assets/audio/game-over.mp3");
         this.victorySound = new Audio("assets/audio/victory-sound.mp3");
-        this.bgMusic.volume = 0.5; 
+        this.bgMusic.volume = 0.5;
         this.bgMusic.loop = true;
     }
     startMusic() {
@@ -14,7 +14,6 @@ class AudioController {
     }
     stopMusic() {
         this.bgMusic.pause();
-        this.bgMusic.currentTime = 0;
     }
     flip() {
         this.flipSound.play();
@@ -23,7 +22,7 @@ class AudioController {
         this.matchedSound.play();
     }
     levelup() {
-        this.levelUpSounds.play();
+        this.levelUpSound.play();
     }
     victory() {
         this.stopMusic();
@@ -39,7 +38,11 @@ class AudioController {
 
 
 
-
+function soundIcon() {
+    if (document.getElementById("soundToggler").classList.contains("soundOn")) {
+        document.getElementById("soundToggler").classList.toggle("soundOff");
+    }
+}
 
 
 
@@ -86,25 +89,24 @@ class MemoryGame {
     generateCards() {
         const level = this.currentLevel;
 
-        let duplicate = [...levels[level], ...levels[level]]; // Code Source: stack-overflow
+        let duplicate = [...levels[level], ...levels[level]]; // Code Source: stack-overflow ES6 spread operator method
 
         let insertCard = document.querySelector(".game-container");
 
         duplicate.forEach((href) =>
-      insertCard.insertAdjacentHTML(
-        "beforeend",
-        `<div class="card">
+            insertCard.insertAdjacentHTML(
+                "beforeend",
+                `<div class="card">
         <div class="card-back card-face">
         </div> <div class="card-front card-face">
             <img class="card-value card-img"
                 src="${href}">
         </div>`
-      )
+            )
         );
-        
-        let cards = Array.from(document.getElementsByClassName('card')
-        );
-    
+
+        let cards = Array.from(document.getElementsByClassName('card'));
+
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 this.flipCard(card);
@@ -120,22 +122,41 @@ class MemoryGame {
         this.timeRemaining = this.totalTime; //time will reset each time when the game starts
         this.matchedCards = [];
         this.busy = true;
+
+        setTimeout(() => {
+            this.audioController.startMusic();
+            this.countDown = this.startCountDown();
+            this.busy = false;
+        }, 500);
+        this.hideCards();
+        this.timer.innerText = this.timeRemaining;
+        this.ticker.innerText = this.totalClicks; //this will reset inner timer and text
+        this.generateCards();
+        this.shuffleCards();
     }
-    flipCard(card) {
-        if(this.canFlipCard(card)) {
+    /*flipCard(card) {
+        if (this.canFlipCard(card)) {
             this.audioController.flip();
         }
     }
     canFlipCard(card) {
-         // if this statements is false then it will return true and if it's not true then it will return false
+        // if this statements is false then it will return true and if it's not true then it will return false
         //return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
-    }
+    }*/
     hideCards() {
         this.cardsArray.forEach((card) => {
-          card.classList.remove("visible");
+            card.classList.remove("visible");
         });
-      }
-   
+    }
+
+    mute() {
+        this.audioController.stopMusic();
+    }
+
+    unmute() {
+        this.audioController.startMusic();
+    }
+
 }
 
 
@@ -148,16 +169,23 @@ class MemoryGame {
 
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
-  
-    let game = new MemoryGame(60);
+
+    let game = new MemoryGame(60); //time
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible'); //this will start the game when clicked
-           
-            game.StartGame();
+            game.startGame();
             //Music start
-    
-        })
+
+        });
+    });
+
+    let soundButton = document.querySelector(".btn").addEventListener("click", () => {
+        if (document.getElementById("soundToggler").classList.contains("soundOff")) {
+            game.mute();
+        } else {
+            game.unmute();
+        }
     });
 }
 

@@ -10,7 +10,6 @@
 *::after {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
 }
 
 html {
@@ -77,7 +76,7 @@ body {
     gap: 10px;
     margin: 50px;
     justify-content: center;
-    perspective: 500px;
+    perspective: 1000px;
 }
 
 .game-info {
@@ -90,7 +89,7 @@ body {
 
 .overlay-text {
     display: none;
-    color: #9afa00;
+    color: #b9e665;
     position: fixed;
     top: 0;
     left: 0;
@@ -170,14 +169,15 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: #cccccc;
-    backface-visibility: hidden;
+    background: #b9e665;
+    position: absolute;
+     backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transition: transform 500ms ease-in-out;
     -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+    transform-style: preserve-3d; 
     border-radius: 12px;
     border-style: solid;
 }
