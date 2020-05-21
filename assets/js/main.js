@@ -26,7 +26,7 @@ class AudioController {
     }
     victory() {
         this.stopMusic();
-        this.victory.play();
+        this.victorySound.play();
     }
     gameOver() {
         this.stopMusic();
@@ -91,7 +91,7 @@ class MemoryGame {
 
         let duplicate = [...levels[level], ...levels[level]]; // Code Source: stack-overflow ES6 spread operator method
 
-        let insertCard = document.querySelector(".game-container");
+        let insertCard = document.querySelector('.game-container');
 
         duplicate.forEach((href) =>
             insertCard.insertAdjacentHTML(
@@ -118,37 +118,53 @@ class MemoryGame {
 
     startGame() {
         this.cardToCheck = null;
-        this.totalClick = 0;
+        this.totalClicks = 0;
         this.timeRemaining = this.totalTime; //time will reset each time when the game starts
         this.matchedCards = [];
         this.busy = true;
 
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.audioController.startMusic();
             this.countDown = this.startCountDown();
             this.busy = false;
-        }, 500);
+        }, 1200);
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
-        this.ticker.innerText = this.totalClicks; //this will reset inner timer and text
+        this.ticker.innerText = this.totalClicks; //this will reset inner timer and text*/
         this.generateCards();
         this.shuffleCards();
     }
+
+    hideCards() {
+        this.cardsArray.forEach((card) => {
+            card.classList.remove('visible');
+        });
+    }
+
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
+            this.totalClicks++;
+            this.ticker.innerText = this.totalClicks;
+            card.classList.add('visible');
+                //if statement
         }
     }
+
+    shuffleCards() {
+        for(let i = this.cardsArray.length -1; i > 0; i--) {
+            let randomIndex = Math.floor(Math.random() * (i+1));
+            this.cardsArray[randomIndex].style.order = i;
+            this.cardsArray[i].style.order = randomIndex;
+        }
+    } // Code snippet source: webdev simplified- FisherYates shuffle algo.
+    
     canFlipCard(card) {
         // if this statements is false then it will return true and player can flip the card
         //return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
         return true;
     }
-    hideCards() {
-        this.cardsArray.forEach((card) => {
-            card.classList.remove("visible");
-        });
-    }
+   
 
     mute() {
         this.audioController.stopMusic();
@@ -176,8 +192,8 @@ function ready() {
         });
     });
 
-    let soundButton = document.querySelector(".btn").addEventListener("click", () => {
-        if (document.getElementById("soundToggler").classList.contains("soundOff")) {
+    let soundButton = document.querySelector('.btn').addEventListener("click", () => {
+        if (document.getElementById('soundToggler').classList.contains('soundOff')) {
             game.mute();
         } else {
             game.unmute();
@@ -186,7 +202,7 @@ function ready() {
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DomContentLoaded', ready());
+    document.addEventListener("DomContentLoaded", ready());
 } else {
     ready();
 }

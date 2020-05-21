@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
 
-@font-face {
+/* @font-face {
     font-family: "Egyptian Nights";
     src: url("assets/fonts/EgyptianNights-yAOV.ttf") format("truetype");
-}
+} */
 
 *,
 *::before,
@@ -165,7 +165,7 @@ body {
     height: 7em;
     width: 7em;
     transition: transform 1000ms ease-in-out;
-    cursor: url('https://res.cloudinary.com/ktm28/image/upload/v1588682662/Jungle_book/boomerang-cursor.png'), auto;
+    cursor: pointer;
 }
 
 .card-face {
