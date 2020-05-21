@@ -123,11 +123,11 @@ class MemoryGame {
         this.matchedCards = [];
         this.busy = true;
 
-        /*setTimeout(() => {
+        setTimeout(() => {
             this.audioController.startMusic();
             this.countDown = this.startCountDown();
             this.busy = false;
-        }, 1200);
+        }, 500);
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks; //this will reset inner timer and text*/
@@ -149,6 +149,26 @@ class MemoryGame {
             card.classList.add('visible');
                 //if statement
         }
+    }
+    startCountDown() {
+        return setInterval(() => {
+            this.timeRemaining--;
+            this.timer.innerText = this.timeRemaining;
+            if(this.timeRemaining === 0)
+                this.gameOver();
+        }, 1000)
+    }
+    
+    gameOver() {
+        clearInterval(this.countDown);
+        this.audioController.gameOver();
+        document.getElementById('game-over-text').classList.add('visible');
+    }
+
+    victory() {
+        clearInterval(this.countDown);
+        this.audioController.victory();
+        document.getElementById('victory-text').classList.add('visible');
     }
 
     shuffleCards() {
