@@ -45,18 +45,22 @@ body {
     background-color: #b9e665;
     margin-top: 5px;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 2em;
     width: 2.2em;
+    margin-left: .5em;
     cursor: pointer;
 }
 
 .soundOn {
-    background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,w_28/v1588692544/Jungle_book/unmute-icon.png');
+    background-image: url("https://res.cloudinary.com/ktm28/image/upload/c_scale,w_28/v1588692544/Jungle_book/unmute-icon.png");
 }
 
 .soundOff {
-    background-image: url('https://res.cloudinary.com/ktm28/image/upload/c_scale,h_32,w_28/v1588692539/Jungle_book/mute-icon.png');
+    background-image: url("https://res.cloudinary.com/ktm28/image/upload/c_scale,h_32,w_28/v1588692539/Jungle_book/mute-icon.png");
 }
+
 
 
 /* --Game Area-- */
@@ -155,17 +159,18 @@ body {
     position: relative;
     height: 7em;
     width: 7em;
+    transition: transform 1000ms ease-in-out;
     cursor: url('https://res.cloudinary.com/ktm28/image/upload/v1588682662/Jungle_book/boomerang-cursor.png'), auto;
 }
 
 .card-face {
     height: 100%;
     width: 100%;
-    /* background-image: url('https://res.cloudinary.com/ktm28/image/upload/v1589904300/Jungle_book/question-mark_kscb6u.png'); */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    background: #cccccc;
     backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden;
@@ -183,7 +188,7 @@ body {
     -o-transform: rotateY(-0);
     -ms-transform: rotateY(0);
     -webkit-transform: rotateY(0);
-   
+
 }
 
 .card.visible .card-back {
@@ -192,7 +197,7 @@ body {
     -o-transform: rotateY(-0);
     -ms-transform: rotateY(0);
     -webkit-transform: rotateY(0);
-    
+
 }
 
 .card-front {
@@ -213,8 +218,6 @@ body {
 }
 
 .card-img {
-    max-width: 7em;
-    max-height: 7em;
+    max-width: 6em;
+    max-height: 6em;
 }
-
-.zoom

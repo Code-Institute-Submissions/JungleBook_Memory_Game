@@ -47,28 +47,28 @@ class AudioController {
 
 // Images for Cards
 
-const level1 = [
+const levelOne = [
     "https://res.cloudinary.com/ktm28/image/upload/v1588621832/Jungle_book/SherKhan.png",
     "https://res.cloudinary.com/ktm28/image/upload/v1588621832/Jungle_book/Mowguli.png",
     "https://res.cloudinary.com/ktm28/image/upload/v1588621831/Jungle_book/King_Louis.png",
     "https://res.cloudinary.com/ktm28/image/upload/v1588621831/Jungle_book/baloo.png",
 ];
 
-const level2 = [
+const levelTwo = [
     "https://res.cloudinary.com/ktm28/image/upload/v1588621831/Jungle_book/Bagheera.png",
     "https://res.cloudinary.com/ktm28/image/upload/v1588621831/Jungle_book/Kaa.png",
 ];
 
-const level3 = [
+const levelThree = [
     "https://res.cloudinary.com/ktm28/image/upload/c_scale,h_150,w_150/v1588621832/Jungle_book/Winifred.png",
     "https://res.cloudinary.com/ktm28/image/upload/v1588621831/Jungle_book/Akela.png",
 ]
 
 // adds cards to next level. Code-source: stack-overflow 
 const levels = {
-    1: level1,
-    2: level2,
-    3: level3,
+    1: levelOne,
+    2: levelTwo,
+    3: levelThree,
 };
 
 //Cards
@@ -88,21 +88,23 @@ class MemoryGame {
 
         let duplicate = [...levels[level], ...levels[level]]; // Code Source: stack-overflow
 
-        let insertCard = document.getElementsByClassName('game-container');
+        let insertCard = document.querySelector(".game-container");
 
-        duplicate.forEach(
-            (href) => insertCard.insertAdjacentHTML('beforeend',`
+        duplicate.forEach((href) =>
+      insertCard.insertAdjacentHTML(
+        "beforeend",
+        `<div class="card">
         <div class="card-back card-face">
-            <img src="https://res.cloudinary.com/ktm28/image/upload/v1589904300/Jungle_book/question-mark_kscb6u.png"
-                class="card-img">
         </div> <div class="card-front card-face">
-            <img class="card-img"
+            <img class="card-value card-img"
                 src="${href}">
-        </div>`)
+        </div>`
+      )
         );
         
-        let cards = Array.from(document.getElementsByClassName('card'));
-
+        let cards = Array.from(document.getElementsByClassName('card')
+        );
+    
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 this.flipCard(card);
@@ -112,6 +114,27 @@ class MemoryGame {
         this.cardsArray = cards;
     }
 
+    startGame() {
+        this.cardToCheck = null;
+        this.totalClick = 0;
+        this.timeRemaining = this.totalTime; //time will reset each time when the game starts
+        this.matchedCards = [];
+        this.busy = true;
+    }
+    flipCard(card) {
+        if(this.canFlipCard(card)) {
+            this.audioController.flip();
+        }
+    }
+    canFlipCard(card) {
+         // if this statements is false then it will return true and if it's not true then it will return false
+        //return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
+    }
+    hideCards() {
+        this.cardsArray.forEach((card) => {
+          card.classList.remove("visible");
+        });
+      }
    
 }
 
@@ -125,11 +148,13 @@ class MemoryGame {
 
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
-
+  
+    let game = new MemoryGame(60);
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
-            overlay.classList.remove('visible');
-            // game.StartGame();
+            overlay.classList.remove('visible'); //this will start the game when clicked
+           
+            game.StartGame();
             //Music start
     
         })
