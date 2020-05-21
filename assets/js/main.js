@@ -134,7 +134,7 @@ class MemoryGame {
         this.generateCards();
         this.shuffleCards();
     }
-    /*flipCard(card) {
+    flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
         }
@@ -142,7 +142,7 @@ class MemoryGame {
     canFlipCard(card) {
         // if this statements is false then it will return true and if it's not true then it will return false
         //return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
-    }*/
+    }
     hideCards() {
         this.cardsArray.forEach((card) => {
             card.classList.remove("visible");

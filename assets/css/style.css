@@ -33,13 +33,14 @@ body {
     font-family: "Egyptian Nights";
     text-align: center;
     font-size: 3.5em;
+    letter-spacing: 0.1em;
 }
 
 
 /* --Sound Toggler */
 
 .btn {
-    border: 1px solid #10552f;
+    border: none;
     border-radius: 50px;
     background-color: #b9e665;
     margin-top: 5px;
@@ -51,6 +52,11 @@ body {
     margin-left: .5em;
     cursor: pointer;
 }
+
+.btn:hover {
+    background-color: #f6fa07;
+}
+
 
 .soundOn {
     background-image: url("https://res.cloudinary.com/ktm28/image/upload/c_scale,w_28/v1588692544/Jungle_book/unmute-icon.png");
