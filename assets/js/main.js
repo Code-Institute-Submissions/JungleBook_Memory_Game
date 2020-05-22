@@ -6,7 +6,8 @@ class AudioController {
         this.levelUpSound = new Audio("assets/audio/level-up.wav");
         this.gameOverSound = new Audio("assets/audio/game-over.mp3");
         this.victorySound = new Audio("assets/audio/victory-sound.mp3");
-        this.bgMusic.volume = 0.5;
+        this.bgMusic.volume = 0.3;
+        this.victorySound.volume = 0.5;
         this.bgMusic.loop = true;
     }
     startMusic() {
@@ -21,7 +22,7 @@ class AudioController {
     match() {
         this.matchedSound.play();
     }
-    levelup() {
+    levelUpBuzz() {
         this.levelUpSound.play();
     }
     victory() {
@@ -147,18 +148,41 @@ class MemoryGame {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
-                //if statement
+
+            if (this.cardToCheck)
+                this.checkCardMatch(card);
+            else
+                this.cardToCheck = card;
         }
     }
+    checkCardMatch(card) {
+        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
+            this.checkCardMatch(card, this.cardToCheck);
+        else
+            this.cardUnMatch(card, this.cardToCheck);
+
+    }
+    cardMatch(card1, card2) {
+        this.matchedCards.push(card1);
+        this.matchedCards.push(card2);
+    }
+    cardUnMatch(card) {
+
+    }
+
+    getCardType(card) {
+        return card.getElementsByClassName('card-value')[0].src;
+    } // this is created for checking match for card in checkCardMatch function
+
     startCountDown() {
         return setInterval(() => {
             this.timeRemaining--;
             this.timer.innerText = this.timeRemaining;
-            if(this.timeRemaining === 0)
+            if (this.timeRemaining === 0)
                 this.gameOver();
         }, 1000)
     }
-    
+
     gameOver() {
         clearInterval(this.countDown);
         this.audioController.gameOver();
@@ -171,20 +195,33 @@ class MemoryGame {
         document.getElementById('victory-text').classList.add('visible');
     }
 
+    levelUp() {
+        clearInterval(this.countDown);
+        this.currentLevel = this.currentLevel + 1;
+        if (this.currentLevel > 3) {
+            this.victory();
+            this.currentLevel = 1;
+        } else {
+            this.audioController.levelUpBuzz();
+            document.getElementById('level-up-text').classList.add('visible');
+        }
+
+    }
+
     shuffleCards() {
-        for(let i = this.cardsArray.length -1; i > 0; i--) {
-            let randomIndex = Math.floor(Math.random() * (i+1));
+        for (let i = this.cardsArray.length - 1; i > 0; i--) {
+            let randomIndex = Math.floor(Math.random() * (i + 1));
             this.cardsArray[randomIndex].style.order = i;
             this.cardsArray[i].style.order = randomIndex;
         }
     } // Code snippet source: webdev simplified- FisherYates shuffle algo.
-    
+
     canFlipCard(card) {
         // if this statements is false then it will return true and player can flip the card
         //return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
         return true;
     }
-   
+
 
     mute() {
         this.audioController.stopMusic();
