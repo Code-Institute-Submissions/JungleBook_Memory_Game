@@ -81,6 +81,7 @@ body {
     grid-template-columns: repeat(4, auto);
     gap: 10px;
     margin: 50px;
+    margin-top: 180px;
     justify-content: center;
     perspective: 1000px;
 }
@@ -224,4 +225,13 @@ body {
 .card-img {
     max-width: 6em;
     max-height: 6em;
+}
+
+/* --media queries-- */
+
+@media (max-width: 600px) {
+    .game-container {
+        grid-template-columns: repeat(2, auto);
+        margin: 50px;
+    }
 }
