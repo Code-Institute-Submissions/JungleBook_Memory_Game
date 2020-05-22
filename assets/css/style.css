@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
 
-/* @font-face {
+ @font-face {
     font-family: "Egyptian Nights";
-    src: url("assets/fonts/EgyptianNights-yAOV.ttf") format("truetype");
-} */
+    src: url("../fonts/EgyptianNights-yAOV.ttf") format("truetype");
+} 
 
 *,
 *::before,
