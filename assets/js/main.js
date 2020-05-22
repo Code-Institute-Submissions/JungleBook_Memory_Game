@@ -7,7 +7,7 @@ class AudioController {
         this.gameOverSound = new Audio("assets/audio/game-over.mp3");
         this.victorySound = new Audio("assets/audio/victory-sound.mp3");
         this.bgMusic.volume = 0.3;
-        this.victorySound.volume = 0.5;
+        this.victorySound.volume = 0.3;
         this.bgMusic.loop = true;
     }
     startMusic() {
@@ -149,25 +149,39 @@ class MemoryGame {
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
 
-            if (this.cardToCheck)
+            if (this.cardToCheck) {
                 this.checkCardMatch(card);
-            else
+            } else {
                 this.cardToCheck = card;
+            }
         }
     }
+    
     checkCardMatch(card) {
         if (this.getCardType(card) === this.getCardType(this.cardToCheck))
-            this.checkCardMatch(card, this.cardToCheck);
+            this.cardMatch(card, this.cardToCheck);
         else
             this.cardUnMatch(card, this.cardToCheck);
 
+        this.cardToCheck = null;
+
     }
+    
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
+        this.audioController.match();
+        if (this.matchedCards.length === this.cardsArray.length)
+            this.levelUp();
     }
-    cardUnMatch(card) {
-
+    
+    cardUnMatch(card1, card2) {
+        this.busy = true;
+        setTimeout(() => {
+            card1.classList.remove('visible');
+            card2.classList.remove('visible');
+            this.busy = false;
+        }, 700);
     }
 
     getCardType(card) {
@@ -193,6 +207,7 @@ class MemoryGame {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
+        this.hideCards();
     }
 
     levelUp() {
@@ -218,8 +233,7 @@ class MemoryGame {
 
     canFlipCard(card) {
         // if this statements is false then it will return true and player can flip the card
-        //return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
-        return true;
+        return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
     }
 
 
