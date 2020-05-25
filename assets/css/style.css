@@ -96,7 +96,7 @@ body {
 
 .overlay-text {
     display: none;
-    color: #b9e665;
+    color: #f12409;
     position: fixed;
     top: 0;
     right: 0;
@@ -107,7 +107,7 @@ body {
     z-index: 100;
     text-shadow: 3px 3px 6px rgba(243, 231, 231, 0.24);
     cursor: pointer;
-    font-family: "Egyptian Nights";
+    font-family: "Egyptian Nights", sans-serif;
 }
 
 .overlay-refresh {
@@ -120,8 +120,8 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 100;
-    font-family: "Egyptian Nights";
-    color: #b9e665;
+    font-family: "Egyptian Nights", sans-serif;
+    color: #f12409;
   }
 
 .overlay-text-small {
@@ -130,8 +130,7 @@ body {
 }
 
 .instruction-text {
-    /* font-family: "Spicy Rice", cursive; */
-    color: #ebee22;
+    color: #f79009;
     font-size: 0.5em;
 
 }
@@ -215,7 +214,7 @@ body {
     text-transform: uppercase;
     color: rgba(236, 253, 2, 0.959);
     user-select: none;
-    /* font-weight: bolder; */
+   
   }
   
 

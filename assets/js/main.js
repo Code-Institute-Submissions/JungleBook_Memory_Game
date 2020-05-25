@@ -89,9 +89,8 @@ class MemoryGame {
 
     generateCards() {
         const level = this.currentLevel;
-
-        let duplicate = [...levels[level], ...levels[level]]; // Code Source: stack-overflow ES6 spread operator method
-
+         // Code Source: stack-overflow ES6 spread operator method
+        let duplicate = [...levels[level], ...levels[level]];
         let insertCard = document.querySelector('.game-container');
 
         duplicate.forEach((href) =>
@@ -99,9 +98,10 @@ class MemoryGame {
                 "beforeend",
                 `<div class="card">
         <div class="card-back card-face">
+        <img src= "https://res.cloudinary.com/ktm28/image/upload/v1590425994/Jungle_book/question_dla1j6.png" alt="card back image" class="card-img">
         </div> <div class="card-front card-face">
             <img class="card-value card-img"
-                src="${href}">
+                src="${href}" alt="jungle-books-image">
         </div>`
             )
         );
@@ -222,14 +222,14 @@ class MemoryGame {
         }
 
     }
-
+         // Code snippet source: webdev simplified & PORTEx Youtube- FisherYates shuffle algo.
     shuffleCards() {
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * (i + 1));
             this.cardsArray[randomIndex].style.order = i;
             this.cardsArray[i].style.order = randomIndex;
         }
-    } // Code snippet source: webdev simplified- FisherYates shuffle algo.
+    }
 
     canFlipCard(card) {
         // if this statements is false then it will return true and player can flip the card
@@ -253,7 +253,7 @@ class MemoryGame {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
 
-    let game = new MemoryGame(1); //time
+    let game = new MemoryGame(60); //time
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible'); //this will start the game when clicked
