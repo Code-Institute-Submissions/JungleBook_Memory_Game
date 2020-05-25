@@ -253,7 +253,7 @@ class MemoryGame {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
 
-    let game = new MemoryGame(60); //time
+    let game = new MemoryGame(1); //time
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible'); //this will start the game when clicked
@@ -270,6 +270,13 @@ function ready() {
             game.unmute();
         }
     });
+
+    let reloadButtons = document.querySelectorAll('#victoryBtn, #gameOverBtn');
+  for (let i = 0; i < reloadButtons.length; i++) {
+    reloadButtons[i].onclick = function () {
+      location.reload();
+    };
+  }
 }
 
 if (document.readyState === 'loading') {

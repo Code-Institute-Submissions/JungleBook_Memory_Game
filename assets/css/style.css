@@ -87,7 +87,7 @@ body {
 }
 
 .game-info {
-    color: #00fa70;
+    color: #f8fc08;
     font-size: 2em;
 }
 
@@ -99,16 +99,30 @@ body {
     color: #b9e665;
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
     justify-content: center;
     align-items: center;
     z-index: 100;
-    text-shadow: 3px 3px 6px rgba(138, 24, 24, 0.5);
+    text-shadow: 3px 3px 6px rgba(243, 231, 231, 0.24);
     cursor: pointer;
-    font-family: "Egyptian Nights", sans-serif;
+    font-family: "Egyptian Nights";
 }
+
+.overlay-refresh {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    font-family: "Egyptian Nights";
+    color: #b9e665;
+  }
 
 .overlay-text-small {
     font-size: 1em;
@@ -116,7 +130,7 @@ body {
 }
 
 .instruction-text {
-    font-family: "Spicy Rice", cursive;
+    /* font-family: "Spicy Rice", cursive; */
     color: #ebee22;
     font-size: 0.5em;
 
@@ -142,20 +156,68 @@ body {
 .overlay-text.visible {
     display: flex;
     flex-direction: column;
-    animation: overlay-grow 500ms forwards;
+    animation: overlay-grow 600ms forwards;
 }
+
+.overlay-refresh.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 600ms forwards;
+  }
 
 @keyframes overlay-grow {
     from {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: rgba(14, 14, 13, 0);
         font-size: 0;
     }
 
     to {
-        background-color: rgb(0, 0, 0, 0.9);
+        background-color: rgb(255, 251, 0);
         font-size: 4em;
     }
 }
+/* --Overlay btn-- */
+.overlay-btn {
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    padding: 20px 60px;
+    margin: 20px 10px 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: top .01s linear;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    background-color: #3bb830;
+    box-shadow: 0 0 0 1px #3bb830 inset,
+      0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+      0 8px 0 0 rgba(65, 204, 30, 0.637),
+      0 8px 0 1px rgba(78, 78, 78, 0.4),
+      0 8px 8px 1px rgba(97, 96, 96, 0.5);
+    cursor: pointer;
+  }
+  
+  .overlay-btn:hover {
+    background-color: #36e027;
+    
+  }
+  
+  .overlay-btn:active {
+    top: 9px;
+    box-shadow: 0 0 0 1px #56e433 inset,
+    0 0 0 2px rgba(255, 255, 255, 0.233) inset,
+    0 0 0 1px rgba(0,0,0,0.4);
+  }
+  
+  .overlay-btn p {
+    font-family: 'Egyptian Nights';
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: rgba(236, 253, 2, 0.959);
+    user-select: none;
+    /* font-weight: bolder; */
+  }
+  
 
 
 /* --Cards-- */
