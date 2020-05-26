@@ -175,6 +175,7 @@ body {
         font-size: 4em;
     }
 }
+
 /* --Overlay btn-- */
 .overlay-btn {
     position: relative;
@@ -217,12 +218,9 @@ body {
    
   }
   
-
-
 /* --Cards-- */
 
 .card {
-    /* background-color: #00fa70; */
     position: relative;
     height: 7em;
     width: 7em;

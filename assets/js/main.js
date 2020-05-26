@@ -6,7 +6,7 @@ class AudioController {
         this.levelUpSound = new Audio("assets/Audio/level-up.wav");
         this.gameOverSound = new Audio("assets/Audio/game-over.mp3");
         this.victorySound = new Audio("assets/Audio/victory-sound.mp3");
-        this.bgMusic.volume = 0.3;
+        this.bgMusic.volume = 0.2;
         this.victorySound.volume = 0.3;
         this.bgMusic.loop = true;
     }
@@ -89,7 +89,7 @@ class MemoryGame {
 
     generateCards() {
         const level = this.currentLevel;
-         // Code Source: stack-overflow ES6 spread operator method
+        // Code Source: stack-overflow ES6 spread operator method
         let duplicate = [...levels[level], ...levels[level]];
         let insertCard = document.querySelector('.game-container');
 
@@ -156,7 +156,7 @@ class MemoryGame {
             }
         }
     }
-    
+
     checkCardMatch(card) {
         if (this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
@@ -166,7 +166,7 @@ class MemoryGame {
         this.cardToCheck = null;
 
     }
-    
+
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
@@ -174,7 +174,7 @@ class MemoryGame {
         if (this.matchedCards.length === this.cardsArray.length)
             this.levelUp();
     }
-    
+
     cardUnMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
@@ -222,7 +222,7 @@ class MemoryGame {
         }
 
     }
-         // Code snippet source: webdev simplified & PORTEx Youtube- FisherYates shuffle algo.
+    // Code snippet source: webdev simplified & PORTEx Youtube- FisherYates shuffle algo.
     shuffleCards() {
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * (i + 1));
@@ -263,8 +263,9 @@ function ready() {
         });
     });
 
-    let soundButton = document.querySelector('.btn').addEventListener("click", () => {
-        if (document.getElementById('soundToggler').classList.contains('soundOff')) {
+    let soundBtn = document.getElementById('soundToggler');
+    soundBtn.addEventListener('click', function () {
+        if (document.getElementById("soundToggler").classList.contains("soundOff")) {
             game.mute();
         } else {
             game.unmute();
@@ -272,11 +273,11 @@ function ready() {
     });
 
     let reloadButtons = document.querySelectorAll('#victoryBtn, #gameOverBtn');
-  for (let i = 0; i < reloadButtons.length; i++) {
-    reloadButtons[i].onclick = function () {
-      location.reload();
-    };
-  }
+    for (let i = 0; i < reloadButtons.length; i++) {
+        reloadButtons[i].onclick = function () {
+            location.reload();
+        };
+    }
 }
 
 if (document.readyState === 'loading') {
