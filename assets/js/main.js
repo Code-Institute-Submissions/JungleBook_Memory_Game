@@ -68,7 +68,7 @@ const levelThree = [
     "https://res.cloudinary.com/ktm28/image/upload/v1588621831/Jungle_book/Akela.png",
 ]
 
-// adds cards to next level. Code-source: stack-overflow 
+// adds cards to next level. Code-SOURCE: stack-overflow 
 const levels = {
     1: levelOne,
     2: levelTwo,
@@ -91,20 +91,16 @@ class MemoryGame {
         const level = this.currentLevel;
         // Code Source: stack-overflow ES6 spread operator method
         let duplicate = [...levels[level], ...levels[level]];
-        let insertCard = document.querySelector('.game-container');
+        let insertCard = document.querySelector('.card-container');
 
         duplicate.forEach((href) =>
-            insertCard.insertAdjacentHTML(
-                "beforeend",
-                `<div class="card">
-        <div class="card-back card-face">
+        insertCard.innerHTML += `<div class="card"><div class="card-back card-face">
         <img src= "https://res.cloudinary.com/ktm28/image/upload/v1590425994/Jungle_book/question_dla1j6.png" alt="card back image" class="card-img">
         </div> <div class="card-front card-face">
             <img class="card-value card-img"
                 src="${href}" alt="jungle-books-image">
         </div>`
-            )
-        );
+    )
 
         let cards = Array.from(document.getElementsByClassName('card'));
 
@@ -130,8 +126,9 @@ class MemoryGame {
             this.busy = false;
         }, 500);
         this.hideCards();
+        //this will reset inner timer and text
         this.timer.innerText = this.timeRemaining;
-        this.ticker.innerText = this.totalClicks; //this will reset inner timer and text*/
+        this.ticker.innerText = this.totalClicks; 
         this.generateCards();
         this.shuffleCards();
     }
@@ -210,10 +207,10 @@ class MemoryGame {
         this.hideCards();
     }
 
-    levelUp() {
+    levelUp() { 
         clearInterval(this.countDown);
         this.currentLevel = this.currentLevel + 1;
-        if (this.currentLevel > 3) {
+        if (this.currentLevel > 3) { 
             this.victory();
             this.currentLevel = 1;
         } else {
@@ -222,7 +219,7 @@ class MemoryGame {
         }
 
     }
-    // Code snippet source: webdev simplified & PORTEx Youtube- FisherYates shuffle algo.
+    // Code snippet SOURCE: webdev simplified & PORTEx Youtube- FisherYates shuffle algo.
     shuffleCards() {
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * (i + 1));
