@@ -1,5 +1,6 @@
 class AudioController {
     constructor() {
+        this.muted = false;
         this.bgMusic = new Audio("assets/Audio/background-main.mp3");
         this.flipSound = new Audio("assets/Audio/flipcard.wav");
         this.matchedSound = new Audio("assets/Audio/matchcard.wav");
@@ -38,7 +39,7 @@ class AudioController {
 
 
 
-
+// Onclick soundIcon to toggle sound icon image
 function soundIcon() {
     if (document.getElementById("soundToggler").classList.contains("soundOn")) {
         document.getElementById("soundToggler").classList.toggle("soundOff");
@@ -49,7 +50,7 @@ function soundIcon() {
 
 
 
-// Images for Cards
+// Images for Cards stored in the respective levels
 
 const levelOne = [
     "https://res.cloudinary.com/ktm28/image/upload/v1588621832/Jungle_book/SherKhan.png",
@@ -68,7 +69,7 @@ const levelThree = [
     "https://res.cloudinary.com/ktm28/image/upload/v1588621831/Jungle_book/Akela.png",
 ]
 
-// adds cards to next level. Code-SOURCE: stack-overflow 
+// Storing cards in a local storage to add cards to next level. Code-SOURCE: stack-overflow 
 const levels = {
     1: levelOne,
     2: levelTwo,
@@ -89,21 +90,21 @@ class MemoryGame {
 
     generateCards() {
         const level = this.currentLevel;
-        // Code Source: stack-overflow ES6 spread operator method
+        // ES6 spread operator method Duplicates cards for each levels
         let duplicate = [...levels[level], ...levels[level]];
         let insertCard = document.querySelector('.card-container');
 
         duplicate.forEach((href) =>
-        insertCard.innerHTML += `<div class="card"><div class="card-back card-face">
+            insertCard.innerHTML += `<div class="card"><div class="card-back card-face">
         <img src= "https://res.cloudinary.com/ktm28/image/upload/v1590425994/Jungle_book/question_dla1j6.png" alt="card back image" class="card-img">
         </div> <div class="card-front card-face">
             <img class="card-value card-img"
                 src="${href}" alt="jungle-books-image">
         </div>`
-    )
+        )
 
         let cards = Array.from(document.getElementsByClassName('card'));
-
+        // call flip card fucntion with a click
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 this.flipCard(card);
@@ -119,16 +120,17 @@ class MemoryGame {
         this.timeRemaining = this.totalTime; //time will reset each time when the game starts
         this.matchedCards = [];
         this.busy = true;
-
+        // wait for 500ms before countdown and bgmusic begins
         setTimeout(() => {
             this.audioController.startMusic();
+            this.muted = false;
             this.countDown = this.startCountDown();
             this.busy = false;
         }, 500);
         this.hideCards();
         //this will reset inner timer and text
         this.timer.innerText = this.timeRemaining;
-        this.ticker.innerText = this.totalClicks; 
+        this.ticker.innerText = this.totalClicks;
         this.generateCards();
         this.shuffleCards();
     }
@@ -138,7 +140,7 @@ class MemoryGame {
             card.classList.remove('visible');
         });
     }
-
+    //flip card with click and increase the total click in the flip section
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
@@ -153,7 +155,7 @@ class MemoryGame {
             }
         }
     }
-
+    // Check if the card is matched
     checkCardMatch(card) {
         if (this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
@@ -163,7 +165,7 @@ class MemoryGame {
         this.cardToCheck = null;
 
     }
-
+    // When both card is matched call this function
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
@@ -171,7 +173,7 @@ class MemoryGame {
         if (this.matchedCards.length === this.cardsArray.length)
             this.levelUp();
     }
-
+    // if the card does not match call this function
     cardUnMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
@@ -180,11 +182,11 @@ class MemoryGame {
             this.busy = false;
         }, 700);
     }
-
+    // this is created for checking match for card in checkCardMatch function
     getCardType(card) {
         return card.getElementsByClassName('card-value')[0].src;
-    } // this is created for checking match for card in checkCardMatch function
-
+    }
+    // this will begin the countdown
     startCountDown() {
         return setInterval(() => {
             this.timeRemaining--;
@@ -206,20 +208,19 @@ class MemoryGame {
         document.getElementById('victory-text').classList.add('visible');
         this.hideCards();
     }
-
-    levelUp() { 
+    // Level Up function
+    levelUp() {
         clearInterval(this.countDown);
         this.currentLevel = this.currentLevel + 1;
-        if (this.currentLevel > 3) { 
+        if (this.currentLevel > 3) {
             this.victory();
             this.currentLevel = 1;
         } else {
             this.audioController.levelUpBuzz();
             document.getElementById('level-up-text').classList.add('visible');
         }
-
     }
-    // Code snippet SOURCE: webdev simplified & PORTEx Youtube- FisherYates shuffle algo.
+    // Code snippet SOURCE: PORTEx Youtube- FisherYates shuffle algo.
     shuffleCards() {
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * (i + 1));
@@ -233,24 +234,24 @@ class MemoryGame {
         return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
     }
 
-
+    //mute function
     mute() {
         this.audioController.stopMusic();
+        this.muted = true;
     }
-
+    //Unmute function
     unmute() {
         this.audioController.startMusic();
+        this.muted = false;
     }
 
 }
 
 
-// Add function to generate cards
-
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
 
-    let game = new MemoryGame(60); //time
+    let game = new MemoryGame(60); //time for each level
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible'); //this will start the game when clicked
@@ -259,19 +260,20 @@ function ready() {
 
         });
     });
-
+    // sound Button 
     let soundBtn = document.getElementById('soundToggler');
-    soundBtn.addEventListener('click', function () {
+    soundBtn.addEventListener('click', () => {
         if (document.getElementById("soundToggler").classList.contains("soundOff")) {
             game.mute();
         } else {
             game.unmute();
+
         }
     });
-
+    // these button will reload the page when clicked 
     let reloadButtons = document.querySelectorAll('#victoryBtn, #gameOverBtn');
     for (let i = 0; i < reloadButtons.length; i++) {
-        reloadButtons[i].onclick = function () {
+        reloadButtons[i].onclick = () => {
             location.reload();
         };
     }
