@@ -12,37 +12,38 @@
 </head>
 
 <body>
+    <!-- page header -->
     <header>
         <h1 class="page-header">JungleBook Memory Game <button id="soundToggler" onclick="soundIcon()"
                 class="btn soundOn"></button></h1>
 
     </header>
-
+    <!--Game start overlay  -->
     <div class="overlay-text visible">
         <img src="https://res.cloudinary.com/ktm28/image/upload/v1589650420/Jungle_book/jb-overlayimg_krfvbq.png"
             alt="JungleBook image" class="overlay-img"> Click to Start
         <span class="instruction-text">Match all cards to win</span>
     </div>
-
+    <!-- GameOver overlay -->
     <div class="overlay-refresh" id="game-over-text">
         Game Over
         <div id="gameOverBtn" class="overlay-btn">
             <p>Play Again</p>
         </div>
     </div>
-
+    <!-- Level Up Overlay -->
     <div class="overlay-text" id="level-up-text">
         Level Up
         <span class="overlay-text-small">Click to play</span>
     </div>
-
+    <!-- Victory overlay -->
     <div class="overlay-refresh" id="victory-text">
         You Won
         <div id="victoryBtn" class="overlay-btn">
             <p>Play Again</p>
         </div>
     </div>
-
+    <!-- Game Area -->
     <div class="game-container">
         <div class="game-info-container">
             <div class="game-info">
