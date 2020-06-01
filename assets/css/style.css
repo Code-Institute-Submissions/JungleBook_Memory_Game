@@ -5,6 +5,11 @@
     src: url("../fonts/EgyptianNights-yAOV.ttf") format("truetype");
 } 
 
+@font-face {
+    font-family: "DJB Get Digital";
+    src: url("../fonts/DJB\ Get\ Digital.ttf");
+}
+
 *,
 *::before,
 *::after {
@@ -30,7 +35,7 @@ body {
 
 .page-header {
     color: #b9e665;
-    font-family: "Egyptian Nights";
+    font-family: "DJB Get Digital";
     text-align: center;
     font-size: 3.5em;
     letter-spacing: 0.1em;
@@ -88,6 +93,12 @@ body {
 .game-info {
     color: #f8fc08;
     font-size: 2em;
+    font-family: "DJB Get Digital";
+}
+
+.digital-ttf {
+    font-family: "DJB Get Digital";
+    color: #fc4801;
 }
 
 
@@ -208,11 +219,11 @@ body {
   }
   
   .overlay-btn p {
-    font-family: 'Egyptian Nights';
+    font-family: "DJB Get Digital";
     text-align: center;
     font-size: 30px;
     text-transform: uppercase;
-    color: rgba(236, 253, 2, 0.959);
+    color: #fc4801;
     user-select: none;
    
   }
