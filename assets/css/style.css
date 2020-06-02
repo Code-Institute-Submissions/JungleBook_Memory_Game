@@ -1,329 +1,308 @@
-@import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
-
 @font-face {
-    font-family: "Egyptian Nights";
-    src: url("../fonts/EgyptianNights-yAOV.ttf") format("truetype");
+	font-family: "Egyptian Nights";
+	src: url("../fonts/EgyptianNights-yAOV.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "DJB Get Digital";
-    src: url("../fonts/DJB\ Get\ Digital.ttf");
+	font-family: "DJB Get Digital";
+	src: url("../fonts/DJB\ Get\ Digital.ttf");
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-}
-
-html {
-    font-family: "Spicy Rice", cursive;
+	box-sizing: border-box;
+	margin: 0;
 }
 
 body {
-    margin: 0;
-    background: url('https://res.cloudinary.com/ktm28/image/upload/v1589642296/Jungle_book/dark-frame_cc0f0d.jpg') no-repeat center center fixed;
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	margin: 0;
+	background: url('https://res.cloudinary.com/ktm28/image/upload/v1589642296/Jungle_book/dark-frame_cc0f0d.jpg') no-repeat center center fixed;
+	height: 100vh;
+	width: 100%;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .page-header {
-    color: #f8fc08;
-    font-family: "DJB Get Digital";
-    text-align: center;
-    font-size: 3.5em;
-    letter-spacing: 0.1em;
+	color: #f8fc08;
+	font-family: "DJB Get Digital";
+	text-align: center;
+	font-size: 3.5em;
+	letter-spacing: 0.1em;
 }
 
 
 /* --Sound Toggler */
 
 .btn {
-    border: none;
-    border-radius: 50px;
-    background-color: #b9e665;
-    margin-top: 5px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 2em;
-    width: 2.2em;
-    margin-left: .5em;
-    cursor: pointer;
+	border: none;
+	border-radius: 50px;
+	background-color: #b9e665;
+	margin-top: 5px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 2em;
+	width: 2.2em;
+	margin-left: .5em;
+	cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #f6fa07;
+	background-color: #f6fa07;
 }
 
-
 .soundOn {
-    background-image: url("https://res.cloudinary.com/ktm28/image/upload/c_scale,w_28/v1588692544/Jungle_book/unmute-icon.png");
+	background-image: url("https://res.cloudinary.com/ktm28/image/upload/c_scale,w_28/v1588692544/Jungle_book/unmute-icon.png");
 }
 
 .soundOff {
-    background-image: url("https://res.cloudinary.com/ktm28/image/upload/c_scale,h_32,w_28/v1588692539/Jungle_book/mute-icon.png");
+	background-image: url("https://res.cloudinary.com/ktm28/image/upload/c_scale,h_32,w_28/v1588692539/Jungle_book/mute-icon.png");
 }
-
 
 
 /* --Game Area-- */
 
 .game-info-container {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: space-between;
 }
 
 .game-container {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    gap: 10px;
-    margin-top: 25px;
-    justify-content: center;
-    perspective: 1000px;
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	gap: 10px;
+	margin-top: 25px;
+	justify-content: center;
+	perspective: 1000px;
 }
 
 .game-info {
-    color: #f8fc08;
-    font-size: 2em;
-    font-family: "DJB Get Digital";
+	color: #f8fc08;
+	font-size: 2em;
+	font-family: "DJB Get Digital", sans-serif;
 }
 
 .digital-ttf {
-    font-family: "DJB Get Digital";
-    color: #fc4801;
+	font-family: "DJB Get Digital", sans-serif;
+	color: #fc4801;
 }
 
 
 /* --Overlays-- */
 
 .overlay-text {
-    display: none;
-    color: #f12409;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    text-shadow: 3px 3px 6px rgba(243, 231, 231, 0.24);
-    cursor: pointer;
-    font-family: "Egyptian Nights", sans-serif;
+	display: none;
+	color: #f12409;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+	text-shadow: 3px 3px 6px rgba(243, 231, 231, 0.24);
+	cursor: pointer;
+	font-family: "Egyptian Nights", sans-serif;
 }
 
 .overlay-refresh {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    font-family: "Egyptian Nights", sans-serif;
-    color: #f12409;
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+	font-family: "Egyptian Nights", sans-serif;
+	color: #f12409;
 }
 
 .overlay-text-small {
-    font-size: 1em;
-    font-family: "Egyptian Nights", sans-serif;
+	font-size: 1em;
+	font-family: "Egyptian Nights", sans-serif;
 }
 
 .instruction-text {
-    color: #f79009;
-    font-size: 0.5em;
-
+	color: #f79009;
+	font-size: 0.5em;
 }
 
 .overlay-img {
-    position: relative;
-    width: 30%;
-    animation: tiger 500ms forwards;
-    animation-timing-function: ease-in;
+	position: relative;
+	width: 30%;
+	animation: tiger 500ms forwards;
+	animation-timing-function: ease-in;
 }
 
 @keyframes tiger {
-    from {
-        width: 0%;
-    }
-
-    to {
-        width: 30%;
-    }
+	from {
+		width: 0%;
+	}
+	to {
+		width: 30%;
+	}
 }
 
 .overlay-text.visible {
-    display: flex;
-    flex-direction: column;
-    animation: overlay-grow 600ms forwards;
+	display: flex;
+	flex-direction: column;
+	animation: overlay-grow 600ms forwards;
 }
 
 .overlay-refresh.visible {
-    display: flex;
-    flex-direction: column;
-    animation: overlay-grow 600ms forwards;
+	display: flex;
+	flex-direction: column;
+	animation: overlay-grow 600ms forwards;
 }
 
 @keyframes overlay-grow {
-    from {
-        background-color: rgba(14, 14, 13, 0);
-        font-size: 0;
-    }
-
-    to {
-        background-color: rgb(255, 251, 0);
-        font-size: 4em;
-    }
+	from {
+		background-color: rgba(14, 14, 13, 0);
+		font-size: 0;
+	}
+	to {
+		background-color: rgb(255, 251, 0);
+		font-size: 4em;
+	}
 }
 
+
 /* --Overlay btn-- */
+
 .overlay-btn {
-    position: relative;
-    display: inline-block;
-    font-size: 22px;
-    padding: 20px 60px;
-    margin: 20px 10px 10px;
-    border-radius: 6px;
-    text-align: center;
-    transition: top .01s linear;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-    background-color: #3bb830;
-    box-shadow: 0 0 0 1px #3bb830 inset,
-        0 0 0 2px rgba(255, 255, 255, 0.15) inset,
-        0 8px 0 0 rgba(65, 204, 30, 0.637),
-        0 8px 0 1px rgba(78, 78, 78, 0.4),
-        0 8px 8px 1px rgba(97, 96, 96, 0.5);
-    cursor: pointer;
+	position: relative;
+	display: inline-block;
+	font-size: 22px;
+	padding: 20px 60px;
+	margin: 20px 10px 10px;
+	border-radius: 6px;
+	text-align: center;
+	transition: top .01s linear;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+	background-color: #3bb830;
+	box-shadow: 0 0 0 1px #3bb830 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 rgba(65, 204, 30, 0.637), 0 8px 0 1px rgba(78, 78, 78, 0.4), 0 8px 8px 1px rgba(97, 96, 96, 0.5);
+	cursor: pointer;
 }
 
 .overlay-btn:hover {
-    background-color: #36e027;
-
+	background-color: #36e027;
 }
 
 .overlay-btn:active {
-    top: 9px;
-    box-shadow: 0 0 0 1px #56e433 inset,
-        0 0 0 2px rgba(255, 255, 255, 0.233) inset,
-        0 0 0 1px rgba(0, 0, 0, 0.4);
+	top: 9px;
+	box-shadow: 0 0 0 1px #56e433 inset, 0 0 0 2px rgba(255, 255, 255, 0.233) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
 }
 
 .overlay-btn p {
-    font-family: "DJB Get Digital";
-    text-align: center;
-    font-size: 30px;
-    text-transform: uppercase;
-    color: #fc4801;
-    user-select: none;
-
+	font-family: "DJB Get Digital", sans-serif;
+	text-align: center;
+	font-size: 30px;
+	text-transform: uppercase;
+	color: #fc4801;
+	user-select: none;
 }
+
 
 /* --Cards-- */
 
 .card {
-    position: relative;
-    height: 7em;
-    width: 7em;
-    transition: transform 1000ms ease-in-out;
-    cursor: pointer;
+	position: relative;
+	height: 7em;
+	width: 7em;
+	transition: transform 1000ms ease-in-out;
+	cursor: pointer;
 }
 
 .card-face {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: rgb(255, 208, 0);
-    position: absolute;
-    backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transition: transform 500ms ease-in-out;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    border-radius: 12px;
-    border-style: solid;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	background: rgb(255, 208, 0);
+	position: absolute;
+	backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	transition: transform 500ms ease-in-out;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	border-radius: 12px;
+	border-style: solid;
 }
 
 .card-back {
-    transform: rotateY(0);
-    -moz-transform: rotateY(0);
-    -o-transform: rotateY(-0);
-    -ms-transform: rotateY(0);
-    -webkit-transform: rotateY(0);
-
+	transform: rotateY(0);
+	-moz-transform: rotateY(0);
+	-o-transform: rotateY(-0);
+	-ms-transform: rotateY(0);
+	-webkit-transform: rotateY(0);
 }
 
 .card.visible .card-back {
-    transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
 }
 
 .card-front {
-    transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    -webkit-transform: rotateY(-180deg);
-
+	transform: rotateY(-180deg);
+	-moz-transform: rotateY(-180deg);
+	-o-transform: rotateY(-180deg);
+	-ms-transform: rotateY(-180deg);
+	-webkit-transform: rotateY(-180deg);
 }
 
 .card.visible .card-front {
-    transform: rotateY(0);
-    -moz-transform: rotateY(0);
-    -o-transform: rotateY(-0);
-    -ms-transform: rotateY(0);
-    -webkit-transform: rotateY(0);
+	transform: rotateY(0);
+	-moz-transform: rotateY(0);
+	-o-transform: rotateY(-0);
+	-ms-transform: rotateY(0);
+	-webkit-transform: rotateY(0);
 }
 
 .card-img {
-    max-width: 7em;
-    max-height: 7em;
+	max-width: 7em;
+	max-height: 7em;
 }
+
 
 /* --media queries-- */
 
 @media (max-width: 600px) {
-    .game-container {
-        grid-template-columns: repeat(2, auto);
-        margin-right: 70px;
-    }
-
-    .game-info {
-        color: #f8fc08;
-        font-size: 1.5em;
-        display: inline-grid;
-    }
-
-    .game-info-container {
-        grid-column: 0.5 / 0.5;
-        display: grid;
-        position: absolute;
-        margin-left: 300px;
-        margin-top: 320px;
-    }
-
-    .page-header {
-        color: #f8fc08;
-        font-family: "DJB Get Digital";
-        text-align: center;
-        font-size: 1.8em;
-        letter-spacing: 0.1em;
-    }
-
+	.game-container {
+		grid-template-columns: repeat(2, auto);
+		margin-right: 70px;
+	}
+	.game-info {
+		color: #f8fc08;
+		font-size: 1.5em;
+		display: inline-grid;
+	}
+	.game-info-container {
+		grid-column: 0.5 / 0.5;
+		display: grid;
+		position: absolute;
+		margin-left: 300px;
+		margin-top: 320px;
+	}
+	.page-header {
+		color: #f8fc08;
+		font-family: "DJB Get Digital", sans-serif;
+		text-align: center;
+		font-size: 1.8em;
+		letter-spacing: 0.1em;
+	}
 }
