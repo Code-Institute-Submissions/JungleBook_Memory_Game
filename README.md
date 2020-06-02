@@ -3,7 +3,7 @@
 The Jungle Book Memory Game has been created for the pleasure and entertainment of all ages. This is a complete web browser-based card flip and match game to improve memory and concentration. 
 
 ## Demo
-A demo of the game can be found [here](https://ktm28.github.io/JungleBook_Memory_Game/).
+A demo of the game can be found [HERE](https://ktm28.github.io/JungleBook_Memory_Game/).
 
 ## UX
 The game has been designed to be intuitive and user friendly within the boundary of my current coding skills and its design scope. It allows for user to find the matching pair for each card. The function of the game is to allow players to match two cards of the same character image to make a pair. The aim here is to find the matching pairs before the timer runs out. The game consists of three difficulty level. On matching pair on each level, the player automatically unlocks the next level. 
@@ -38,7 +38,7 @@ The game has been designed to be intuitive and user friendly within the boundary
 *	 Sound effect for card flip, card match and level up. 
 *	Countdown timer and flip counter for each flip. 
 *	Background sound mute and unmute button.
-*          pointer cursor for overlay and cards.
+*   pointer cursor for overlay and cards.
 *	Simple click to start overlay to start the game.
 *	3D buttons for game-over or victory which refresh the page and leads to the game start overlay.   
 *	level up overlay with click to continue. 
@@ -91,7 +91,7 @@ In the future,
 
 ## Credits
 ### Code
-* I’ve used JavaScript object-oriented programming concept learned from PortEXE Mix or Match card game found on [YouTube]( https://www.youtube.com/watch?v=3uuQ3g92oPQ);
+* I’ve used JavaScript object-oriented programming concept learned from PortEXE Mix or Match card game found on [YouTube]( https://www.youtube.com/watch?v=3uuQ3g92oPQ)
 * I’ve used solutions found in stack-overflow for local storage storing levels in the game.
 * To duplicate cards in Array with three(…) dots spread operator method is taken from [codingame.com]( https://www.codingame.com/playgrounds/7998/es6-tutorials-spread-operator-with-fun)
 * For 3D buttons [codepen.io]( https://codepen.io/FelipeMarcos/pen/tfhEg)
